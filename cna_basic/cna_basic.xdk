@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.webapp",
       "src": "webapp/template-phaser-portrait-webapp/sample.zip",
       "projectGuid": "823c3f64-063e-4604-b15f-3bbe74545f93",
-      "lastModifiedDate": 1456779999058,
+      "lastModifiedDate": 1457695472810,
       "creationDate": 1456779997880
     },
     "sourceDirectory": "www",
@@ -34,7 +34,8 @@
         "dependedBy": [],
         "originType": "cordova.io",
         "origin": "org.apache.cordova.splashscreen",
-        "permissions": {}
+        "permissions": {},
+        "name": "Splashscreen"
       }
     ],
     "buildConfigurations": {
@@ -98,7 +99,7 @@
         "excludedLibraries_": "",
         "iosProvs_": [],
         "cordovaCLIVersion_": "5.1.1",
-        "crosswalkVersion_": "14",
+        "crosswalkVersion_": "15",
         "appVersion_": "0.0.1",
         "appDescription_": "Use this template to start creating Phaser based mobile game web apps.",
         "appAuthor_": "Intel XDK",

@@ -1,3 +1,39 @@
+MiningGrid = function(indexX, indexY, game, pngId)
+{
+    this.game = game;
+    this.indexX = indexX;
+    this.indexY = indexY;
+    
+    Phaser.Sprite.call(this, game, 0,  0, pngId);
+    game.add.existing(this);
+   
+    
+};
+
+MiningGrid.prototype = Object.create(Phaser.Sprite.prototype);
+MiningGrid.prototype.constructor = MiningGrid;
+
+MiningGrid.prototype.update = function()
+{
+};
+
+MiningMap = function(game)
+{
+    this.game = game;
+    
+    for(var i = 0 ; i < 20; i++)
+    {
+        for(var j = 0 ; j < 20 ; j++)
+        {
+            grid = new MiningGrid(i, j, this.game);
+            this.add(grid);
+        }
+    }
+};
+
+MiningMap.prototype = Object.create(Phaser.Group.prototype);
+MiningMap.prototype.constructor = MiningMap;
+
 /* jshint browser:true */
 // create BasicGame Class
 BasicGame = {
@@ -54,6 +90,7 @@ BasicGame.Game.prototype = {
         // Here we load the assets required for our preloader (in this case a 
         // background and a loading bar)
         this.load.image('logo', 'asset/phaser.png');
+        this.load.image('rock', 'asset/rock.png');
     },
 
     create: function () {
