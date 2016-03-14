@@ -5,9 +5,12 @@ MiningGrid = function(indexX, indexY, game, pngId)
     this.indexY = indexY;
     
     Phaser.Sprite.call(this, game, 0,  0, pngId);
-    game.add.existing(this);
+    this.scale.set(0.1, 0.1);
+    this.position.x = this.indexX * 30;
+    this.position.y = this.indexY * 30;
    
-    
+    console.log("X: " + this.position.x " Y: " + this.position.y);
+
 };
 
 MiningGrid.prototype = Object.create(Phaser.Sprite.prototype);
@@ -20,15 +23,17 @@ MiningGrid.prototype.update = function()
 MiningMap = function(game)
 {
     this.game = game;
-    
-    for(var i = 0 ; i < 20; i++)
+    Phaser.Group.call(this, game, game.world, 'Map', false, true, Phaser.Physics.ARCADE);
+    for(var i = 0 ; i < 10; i++)
     {
-        for(var j = 0 ; j < 20 ; j++)
+        for(var j = 0 ; j < 10 ; j++)
         {
             grid = new MiningGrid(i, j, this.game);
             this.add(grid);
         }
     }
+    
+    game.add.existing(this);
 };
 
 MiningMap.prototype = Object.create(Phaser.Group.prototype);
@@ -95,13 +100,8 @@ BasicGame.Game.prototype = {
 
     create: function () {
         // Add logo to the center of the stage
-        this.logo = this.add.sprite(
-            this.world.centerX, // (centerX, centerY) is the center coordination
-            this.world.centerY,
-            'logo');
-        // Set the anchor to the center of the sprite
-        this.logo.anchor.setTo(0.5, 0.5);
-
+        this.minerMap = new MiningMap(this);
+        
     },
 
     gameResized: function (width, height) {
